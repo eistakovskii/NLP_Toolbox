@@ -1,0 +1,27 @@
+500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+1500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+2500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+3500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+4500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+(4722,
+ 278,
+ 4564.456033945084,
+ 0,
+ ['Ich erkläre die am Freitag, dem 17. Dezember unterbrochene Sitzungsperiode des Europäischen Parlaments für wiederaufgenommen, wünsche Ihnen nochmals alles Gute zum Jahreswechsel und hoffe, dass Sie schöne Ferien hatten.',
+  'Die Wirtschaften wachsen, bald haben wir 25 bis 30 Mitgliedstaaten.',
+  'Ich möchte deshalb darum bitten, dass man in diesem speziellen Fall auch an Irland denkt.',
+  'Zum zweiten müssen wir auch unsere eigene Rolle bei der Prüfung klarstellen.',
+  'Warum soll es nicht praktikabel sein - und es ist differenzierbar -, dass man die Transaktionen zum sofortigen Devisenaustausch, all die sogenannten Kassageschäfte, die Devisentermin- und Optionsgeschäfte zum Gegenstand dieser Steuer macht?'])
+
+1h 16m 4s
+completed at 2:51 PM

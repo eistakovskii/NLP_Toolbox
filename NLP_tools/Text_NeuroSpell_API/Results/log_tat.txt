@@ -1,0 +1,27 @@
+500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+1500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+2500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+3500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+4500 sentences out of 5000 in progress!
+NO CSV EXPORTED
+
+(4753,
+ 227,
+ 3517.7395372390747,
+ 21,
+ ['Ich muss schlafen gehen.',
+  'Die Situation ist schlimmer als wir dachten.',
+  'Schade, dass du nicht kommen kannst.',
+  'Ich würde gerne an deiner Stelle gehen.',
+  'Ich habe den Großteil des Sommers in London verbracht.'])
+
+58m 37s
+completed at 2:27 PM
