@@ -1,3 +1,7 @@
+# PULL THE LIST OF NECESSARY VERBS FROM THE WIKI PAGE
+
+# THE LIST IS LATER USED IN THE Verb_unp3.py code via import
+
 def wiki_list():
     from bs4 import BeautifulSoup
     import requests
