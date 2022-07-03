@@ -30,7 +30,7 @@ def correct_with_ns(path: str, num_sent: int, verbose = False, verbose_checkpoin
   test_batch = lnds[0:num_sent]
 
   # API PREP
-  url = "http://52.59.173.227:8080/NeuroSpellRestServer/rest/NeuroSpellAll"
+  url = "INSERT URL FOR API CALLS"
   headers = {'Content-Type': 'application/json'}
   payloads = [json.dumps({"language": "de", "text": lines}) for lines in test_batch]
 
