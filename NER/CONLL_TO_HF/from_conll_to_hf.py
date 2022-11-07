@@ -24,10 +24,10 @@ class NER_dataset_Config(datasets.BuilderConfig):
 
 
 class NER_dataset(datasets.GeneratorBasedBuilder):
-    """NER_dataset dataset."""
+    """NER_dataset."""
 
     BUILDER_CONFIGS = [
-        NER_dataset_Config(name="NER_dataset", version=datasets.Version("1.0.0"), description="NER_dataset dataset"),
+        NER_dataset_Config(name="NER_dataset", version=datasets.Version("1.0.0"), description="NER_dataset"),
     ]
 
     def __init__(self,
