@@ -149,19 +149,3 @@ class HF_NER_dataset(object):
 
     def validation(self):
         return self._dataset["validation"]
-
-
-if __name__ == '__main__':
-    print('\nEnter the path to your data:')
-    main_path_in = input()
-    tg_in = ("B-NAVY", "I-NAVY", "B-ARMY", "I-ARMY", "B-AIR_FORCE", "I-AIR_FORCE", "B-MISSILES", "I-MISSILES", "O")
-    dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
-
-    print(dataset['train'])
-    print(dataset['test'])
-    print(dataset['validation'])
-
-    print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
-
-
-    print("First sample: ", dataset['train'][0])
