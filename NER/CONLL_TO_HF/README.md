@@ -1,7 +1,12 @@
-Transform a CONLL type file into a hugging face dataset
+First, use label studio (https://labelstud.io/) to manually mark your data.
 
-To use the script in the notebook copy and paste the following code:
+Export your data as a CONLL file.
 
+Use the split_data.py file to split the whole tagged CONLL file into 3 txt files, 3 splits: train.txt, valid.txt, test.txt
+
+To then transform these text files into a hugging face dataset use the from_conll_to_hf.py script.
+
+Below you will find the example code to prep your data and start training the NER model with a custom hugging face dataset.
 
 
 ```python
@@ -10,7 +15,7 @@ To use the script in the notebook copy and paste the following code:
 
 from from_conll_to_hf import *
 
-main_path_in = YOUR PATH # insert here the path to your txt files split in train, valid and test splits as a string
+main_path_in = YOUR PATH # insert here the path (as a string) to your txt files that were split beforehand into train, valid and test splits 
 tg_in = ("B-LOC", "I-LOC", "B-ORG", "I-ORG", "O") # add here your NE tags in the BIO format as a tuple
 dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
 
