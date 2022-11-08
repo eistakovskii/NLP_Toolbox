@@ -10,7 +10,7 @@ To use the script in the notebook copy and paste the following code:
 
 from from_conll_to_hf import *
 
-main_path_in = YOUR PATH # insert here the path to your txt files split in train, valid and test splits
+main_path_in = YOUR PATH # insert here the path to your txt files split in train, valid and test splits as a string
 tg_in = ("B-LOC", "I-LOC", "B-ORG", "I-ORG", "O") # add here your NE tags in the BIO format as a tuple
 dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
 
