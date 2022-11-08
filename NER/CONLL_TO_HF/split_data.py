@@ -10,7 +10,7 @@ def do_the_splits(PATH_TO_YOUR_DATA: str) -> None:
   
   ARGS:
 
-  PATH_TO_YOUR_DATA: path to your tagged raw data which has 4 columns separated by a spce: e.g. "машина -X- _ O"
+  PATH_TO_YOUR_DATA: path to your tagged raw data which has 4 columns separated by a space: e.g. "машина -X- _ O"
 
   OUTPUT:
 
