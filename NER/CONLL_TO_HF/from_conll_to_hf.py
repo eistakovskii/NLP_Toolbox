@@ -122,12 +122,13 @@ class HF_NER_dataset(object):
     """
     NAME = "HF_NER_dataset"
 
-    def __init__(self, mp, tg):
+    def __init__(self, mp, tg, exp_bool):
         
         self._mp = mp
         self._tg = tg
+        self._export_bool = exp_bool
         
-        train_split_get, val_split_get, test_split_get, ner_tags_get = do_the_splits(self._mp, self._tg)
+        train_split_get, val_split_get, test_split_get, ner_tags_get = do_the_splits(self._mp, self._tg, self._export_bool)
         ner_tags_get = tuple(ner_tags_get)
         
         cache_dir = os.path.join(str(Path.home()), '.hf_ner_dataset')
@@ -193,7 +194,9 @@ if __name__ == '__main__':
     
     tg_in = tg_in_t.split(',')
 
-    dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
+    exp_bool_in = args.export
+
+    dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in, exp_bool=exp_bool_in).dataset
 
     print(dataset['train'])
     print(dataset['test'])
