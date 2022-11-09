@@ -12,39 +12,41 @@ Change the (*split_data.py*) if you prefer a different split
 
 Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
 
-Locate to the directory
-``` shell
-git clone https://github.com/eistakovskii/NLP_projects/CONLL_TO_HF.git
-```
-Run the commands below
-``` shell
-pip install requirements.txt
-py ner_create_dataset.py --file_path PATH_TO_YOUR_FILE\YOUR_FILE.conll --tags LOC,ORG,MISC
+  Clone the repor
+  ``` shell
+  git clone https://github.com/eistakovskii/NLP_projects/CONLL_TO_HF.git
+  ```
+  Locate to the repo directory
+  
+  Run the commands below
+  ``` shell
+  pip install requirements.txt
+  py ner_create_dataset.py --file_path PATH_TO_YOUR_FILE\YOUR_FILE.conll --tags LOC,ORG,MISC
 
-```
+  ```
 Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
 
+  ```
+  !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
+  !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
+  ```
 
-```python
+  ```python
+  from from_conll_to_hf import *
 
-!wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
-!wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
+  main_path_in = YOUR PATH # insert here the path (as a string) to your txt file
+  tg_in =  ['ORG', 'LOC', 'MISC'] # specify here your target NE tags. Note that they will be converted into the BIO format and the tag 'O' will be added by default
+  dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
 
-from from_conll_to_hf import *
+  print(dataset['train'])
+  print(dataset['test'])
+  print(dataset['validation'])
 
-main_path_in = YOUR PATH # insert here the path (as a string) to your txt files that were split beforehand into train, valid and test splits 
-tg_in = ("B-LOC", "I-LOC", "B-ORG", "I-ORG", "O") # add here your NE tags in the BIO format as a tuple
-dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
-
-print(dataset['train'])
-print(dataset['test'])
-print(dataset['validation'])
-
-print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
+  print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
 
 
-print("First sample: ", dataset['train'][0])
+  print("First sample: ", dataset['train'][0])
 
-```
+  ```
 
 
