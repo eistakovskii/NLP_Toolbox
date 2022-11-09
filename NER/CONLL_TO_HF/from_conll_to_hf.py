@@ -5,11 +5,16 @@ import os
 from pathlib import Path
 from datasets import ClassLabel, DownloadConfig
 
+from split_data import do_the_splits
+
+import argparse
+
 logger = datasets.logging.get_logger(__name__)
 
 
 _CITATION = ""
 _DESCRIPTION = """"""
+
 
 
 class NER_dataset_Config(datasets.BuilderConfig):
@@ -33,17 +38,15 @@ class NER_dataset(datasets.GeneratorBasedBuilder):
     def __init__(self,
                  *args,
                  cache_dir,
-                 main_dir_path,
-                 train_file="train.txt",
-                 val_file="valid.txt",
-                 test_file="test.txt",
+                 train_list,
+                 val_list,
+                 test_list,
                  ner_tags,
                  **kwargs):
         self._ner_tags = ner_tags
-        self._train_file = train_file
-        self._val_file = val_file
-        self._test_file = test_file
-        self._main_dir_path = main_dir_path
+        self._train_list = train_list
+        self._val_list = val_list
+        self._test_list = test_list
         super(NER_dataset, self).__init__(*args, cache_dir=cache_dir, **kwargs)
 
     def _info(self):
@@ -72,38 +75,44 @@ class NER_dataset(datasets.GeneratorBasedBuilder):
         """
 
         return [
-            datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"filepath": self._main_dir_path + self._train_file}),
-            datasets.SplitGenerator(name=datasets.Split.VALIDATION, gen_kwargs={"filepath": self._main_dir_path + self._val_file}),
-            datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": self._main_dir_path + self._test_file}),
+            datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"curr_split": self._train_list}),
+            datasets.SplitGenerator(name=datasets.Split.VALIDATION, gen_kwargs={"curr_split": self._val_list}),
+            datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"curr_split": self._test_list}),
         ]
 
-    def _generate_examples(self, filepath):
-        logger.info("⏳ Generating examples from = %s", filepath)
-        with open(filepath, encoding="utf-8") as f:
-            guid = 0
-            tokens = []
-            ner_tags = []
-            for line in f:
-                if line == "" or line == "\n":
-                    if tokens:
-                        yield guid, {
-                            "id": str(guid),
-                            "tokens": tokens,
-                            "ner_tags": ner_tags,
-                        }
-                        guid += 1
-                        tokens = []
-                        ner_tags = []
-                else:
-                    # NER_dataset tokens are space separated
-                    splits = line.split(" ")
-                    tokens.append(splits[0])
-                    ner_tags.append(splits[1].rstrip())
-            # last example
-            yield guid, {
-                "id": str(guid),
-                "tokens": tokens,
-                "ner_tags": ner_tags,
+    def _generate_examples(self, curr_split):
+
+        """
+        Process each split
+        """
+        
+        logger.info("⏳ Generating examples from = %s", curr_split)
+        
+        guid = 0
+        tokens = []
+        ner_tags = []
+        
+        for line in curr_split:
+            if line == "" or line == "\n":
+                if tokens:
+                    yield guid, {
+                        "id": str(guid),
+                        "tokens": tokens,
+                        "ner_tags": ner_tags,
+                    }
+                    guid += 1
+                    tokens = []
+                    ner_tags = []
+            else:
+                # NER_dataset tokens are space separated
+                splits = line.split(" ")
+                tokens.append(splits[0])
+                ner_tags.append(splits[1].rstrip())
+        # last example
+        yield guid, {
+            "id": str(guid),
+            "tokens": tokens,
+            "ner_tags": ner_tags,
             }
 
 
@@ -114,14 +123,26 @@ class HF_NER_dataset(object):
     NAME = "HF_NER_dataset"
 
     def __init__(self, mp, tg):
+        
         self._mp = mp
         self._tg = tg
+        
+        train_split_get, val_split_get, test_split_get, ner_tags_get = do_the_splits(self._mp, self._tg)
+        ner_tags_get = tuple(ner_tags_get)
+        
         cache_dir = os.path.join(str(Path.home()), '.hf_ner_dataset')
         print("Cache directory: ", cache_dir)
         os.makedirs(cache_dir, exist_ok=True)
         download_config = DownloadConfig(cache_dir=cache_dir)
-        self._dataset = NER_dataset(cache_dir=cache_dir, main_dir_path = self._mp, ner_tags = self._tg)
+        
+        self._dataset = NER_dataset(cache_dir=cache_dir, 
+            train_list = train_split_get,
+            val_list= val_split_get,
+            test_list= test_split_get,
+            ner_tags = ner_tags_get)
+        
         print("Cache1 directory: ",  self._dataset.cache_dir)
+        
         self._dataset.download_and_prepare(download_config=download_config)
         self._dataset = self._dataset.as_dataset()
 
@@ -149,3 +170,36 @@ class HF_NER_dataset(object):
 
     def validation(self):
         return self._dataset["validation"]
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument(
+        "--file_path", type=str, help="path to your conll file", required=True
+    )
+    parser.add_argument(
+        "--tags", type=str, help="your NE tags", required=True
+    )
+    parser.add_argument(
+        "--export", type=bool, default=False, help="export the splits locally"
+    )
+    
+    args = parser.parse_args()
+    
+    main_path_in = args.file_path
+
+    tg_in_t = args.tags
+    
+    tg_in = tg_in_t.split(',')
+
+    dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in).dataset
+
+    print(dataset['train'])
+    print(dataset['test'])
+    print(dataset['validation'])
+
+    print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
+
+
+    print("First sample: ", dataset['train'][0])
