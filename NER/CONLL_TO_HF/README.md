@@ -1,4 +1,6 @@
-First, use label studio (https://labelstud.io/) to manually tag your data.
+** How to transform a CONLL type dataset for NER into a Huggingface dataset
+
+* First, use label studio (https://labelstud.io/) to manually tag your data.
 ![alt text](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/label_studio_ex.png)
 
 Export your data as a CONLL file.
