@@ -1,4 +1,4 @@
-def do_the_splits(PATH_TO_YOUR_DATA: str) -> None:
+def do_the_splits(PATH_TO_YOUR_DATA: str, NER_TAGS_TO_KEEP: list, export_splits = False) -> list:
 
     """
     DESCRIPTION:
@@ -11,13 +11,21 @@ def do_the_splits(PATH_TO_YOUR_DATA: str) -> None:
     ARGS:
 
     PATH_TO_YOUR_DATA: path to your tagged raw data which has 4 columns separated by a space: e.g. "машина -X- _ O"
+    NER_TAGS_TO_KEEP: indicate which tags you want to keep, applicable in particular when you have many tags and you need only few
 
     OUTPUT:
 
-    None
+    Returns 4 lists: train split, validation split, test split, and also a list of tags
+    
     """
     
-    ner_tags_to_keep = set(["B-ORG", "I-ORG", "B-LOC", "I-LOC", "O"]) # TAGS TO KEEP
+    tag_list_temp = list('O')
+    
+    for tag in NER_TAGS_TO_KEEP:
+        bio_tags_out = [prefix + tag for prefix in ['B-', 'I-']]
+        tag_list_temp.extend(bio_tags_out)
+    
+    ner_tags_to_keep = set(tag_list_temp)
 
     with open(PATH_TO_YOUR_DATA, encoding='utf-8') as f: # works just fine with either txt files or conll files
         all_lines = f.readlines()
@@ -55,15 +63,22 @@ def do_the_splits(PATH_TO_YOUR_DATA: str) -> None:
                 test_split_l.append(temp_str)
 
 
-    with open(f'train.txt', mode = 'w', encoding = 'utf-8') as f2:
-        for i in train_split_l[1:]:
-            f2.write(i)
+    if export_splits:
+        
+        with open(f'train.txt', mode = 'w', encoding = 'utf-8') as f2:
+            for i in train_split_l[1:]:
+                f2.write(i)
 
-    with open(f'valid.txt', mode = 'w', encoding = 'utf-8') as f2:
-        for i in val_split_l[1:]:
-            f2.write(i)
+        with open(f'valid.txt', mode = 'w', encoding = 'utf-8') as f2:
+            for i in val_split_l[1:]:
+                f2.write(i)
 
-    with open(f'test.txt', mode = 'w', encoding = 'utf-8') as f2:
-        for i in test_split_l[1:]:
-            f2.write(i)
-    pass
+        with open(f'test.txt', mode = 'w', encoding = 'utf-8') as f2:
+            for i in test_split_l[1:]:
+                f2.write(i)
+
+    train_split_out = train_split_l[1:]
+    val_split_out = val_split_l[1:]
+    test_split_out = test_split_l[1:]
+    
+    return train_split_out, val_split_out, test_split_out, ner_tags_to_keep
