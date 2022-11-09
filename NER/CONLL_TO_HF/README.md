@@ -1,13 +1,13 @@
-** How to transform a CONLL type dataset for NER into a Huggingface dataset
+**How to transform a CONLL type dataset for NER into a Huggingface dataset**
 
-* First, use label studio (https://labelstud.io/) to manually tag your data.
+* First, use the open source library [label studio](https://labelstud.io/) to manually tag your data.
 ![alt text](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/label_studio_ex.png)
 
-Export your data as a CONLL file.
+* Export your data as a CONLL file.
 
-Use the split_data.py file to split the whole tagged CONLL file into 3 txt files, 3 splits: train.txt, valid.txt, test.txt
+* Use the [*split_data.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/split_data.py) file to split the whole tagged CONLL file into 3 txt files, 3 splits: train.txt, valid.txt, test.txt
 
-To then transform these text files into a hugging face dataset use the from_conll_to_hf.py script.
+* Transform these text files into a hugging face dataset using the [*from_conll_to_hf.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/from_conll_to_hf.py) script.
 
 Below you will find the example code to prep your data and start training the NER model with a custom hugging face dataset.
 
