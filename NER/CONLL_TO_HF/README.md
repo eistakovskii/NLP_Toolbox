@@ -5,7 +5,7 @@
 
 * Export your data as a CONLL file.
 
-* Use the [*split_data.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/split_data.py) file to split the whole tagged CONLL file into 3 txt files, 3 splits: train.txt, valid.txt, test.txt
+* Use the [*split_data.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/split_data.py) file to split the whole tagged CONLL file into 3 txt files, i.e. 3 splits: train.txt, valid.txt, test.txt
 
 * Transform these text files into a hugging face dataset using the [*from_conll_to_hf.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/from_conll_to_hf.py) script.
 
