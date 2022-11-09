@@ -5,15 +5,29 @@
 
 * Export your data as a CONLL file.
 
-* Use the [*split_data.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/split_data.py) file to split the whole tagged CONLL file into 3 txt files, i.e. 3 splits: train.txt, valid.txt, test.txt
+* Import and convert the CONLL file into a hugging face dataset using the [*from_conll_to_hf.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/from_conll_to_hf.py) script.
 
-* Transform these text files into a hugging face dataset using the [*from_conll_to_hf.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/from_conll_to_hf.py) script.
+Note that the *from_conll_to_hf.py* script does the split into train, validation, and test splits for you internally. The proportion is 80/10/10 respectively.
+Change the (*split_data.py*) if you prefer a different split
 
-Below you will find the example code to prep your data and start training the NER model with a custom hugging face dataset.
+Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
+
+Locate to the directory
+``` shell
+git clone https://github.com/eistakovskii/NLP_projects/CONLL_TO_HF.git
+```
+Run the commands below
+``` shell
+pip install requirements.txt
+py ner_create_dataset.py --file_path PATH_TO_YOUR_FILE\YOUR_FILE.conll --tags LOC,ORG,MISC
+
+```
+Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
 
 
 ```python
 
+!wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
 !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
 
 from from_conll_to_hf import *
