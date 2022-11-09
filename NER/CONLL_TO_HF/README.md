@@ -21,14 +21,14 @@ Below you will find the example code to prep your custom hugging face dataset in
   Run the commands below
   ``` shell
   pip install requirements.txt
-  py ner_create_dataset.py --file_path PATH_TO_YOUR_FILE\YOUR_FILE.conll --tags LOC,ORG,MISC
+  py ner_create_dataset.py --file_path PATH_TO_YOUR_FILE\YOUR_FILE.conll --tags LOC,ORG,MISC --export True
 
   ```
-Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
+Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook
 
   ```
   !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
-  !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/from_conll_to_hf.py
+  !wget https://raw.githubusercontent.com/eistakovskii/NLP_projects/main/NER/CONLL_TO_HF/split_data.py
   ```
 
   ```python
