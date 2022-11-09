@@ -10,7 +10,7 @@
 Note that the *from_conll_to_hf.py* script does the split into train, validation, and test splits for you internally. The proportion is 80/10/10 respectively.
 Change the [*split_data.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NER/CONLL_TO_HF/split_data.py) if you prefer a different split
 
-Below you will find the example code to prep your custom hugging face dataset inside a jupyter notebook.
+Below you will find the example code to prep your custom hugging face dataset locally
 
   Clone the repo
   ``` shell
