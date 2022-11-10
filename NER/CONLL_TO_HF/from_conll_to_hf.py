@@ -122,7 +122,7 @@ class HF_NER_dataset(object):
     """
     NAME = "HF_NER_dataset"
 
-    def __init__(self, mp, tg, exp_bool):
+    def __init__(self, mp, tg, exp_bool=0):
         
         self._mp = mp
         self._tg = tg
