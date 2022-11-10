@@ -8,6 +8,8 @@ from transformers import AutoModelForTokenClassification
 from transformers import pipeline
 from transformers import AutoTokenizer
 
+import webbrowser
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
@@ -80,6 +82,11 @@ if __name__ == "__main__":
     ex = [{"text": doc_text,
         "ents": [{"start": x[0], "end": x[1], "label": x[2]} for x in start_end_labels]}]
 
-    tagged_sent = displacy.render(ex, style="ent", manual=True, options=options, jupyter=False)
+     tagged_sent = displacy.render(ex, style="ent", manual=True, options=options, jupyter=False)
+
+    with open('tagged_temp.html','w') as f:
+        f.write(tagged_sent)
     
-    print(tagged_sent)
+    filename = 'tagged_temp.html'
+    
+    webbrowser.open_new_tab(filename)
