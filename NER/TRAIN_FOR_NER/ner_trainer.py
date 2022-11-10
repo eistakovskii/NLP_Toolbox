@@ -170,7 +170,7 @@ if __name__ == "__main__":
         save_steps=1000,
         logging_steps=1000,
         max_steps=args.max_steps,
-        warmup_steps=args.warmup_steps
+        seed=42
     )
 
     trainer = Trainer(
