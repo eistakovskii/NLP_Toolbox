@@ -4,3 +4,4 @@ transformers
 numpy
 datasets
 torch
+spacy
