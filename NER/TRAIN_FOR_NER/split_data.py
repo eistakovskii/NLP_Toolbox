@@ -2,14 +2,19 @@ def do_the_splits(PATH_TO_YOUR_DATA: str, NER_TAGS_TO_KEEP: list, export_splits 
 
     """
     DESCRIPTION:
+    
     Takes a path to a txt files in the CONLL format (4 columns present) and splits it into 3 splits: train, validation, test. The proportion is 80, 10, 10.
     The data is separated not by lines but rather by sentences/text samples. When exporting from Label Studio you can notice that the text are not only tokenized but also
     split with a newline character into sentences. The splits thus were done by counting the newlines character.
     Note that the sentences are not randomized upon splitting.
+    
     ARGS:
+    
     PATH_TO_YOUR_DATA: path to your tagged raw data which has 4 columns separated by a space: e.g. "машина -X- _ O"
     NER_TAGS_TO_KEEP: indicate which tags you want to keep, applicable in particular when you have many tags and you need only few
+    
     OUTPUT:
+    
     Returns 4 lists: train split, validation split, test split, and also a list of tags
     
     """
