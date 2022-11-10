@@ -81,3 +81,5 @@ if __name__ == "__main__":
         "ents": [{"start": x[0], "end": x[1], "label": x[2]} for x in start_end_labels]}]
 
     tagged_sent = displacy.render(ex, style="ent", manual=True, options=options)
+    
+    print(tagged_sent)
