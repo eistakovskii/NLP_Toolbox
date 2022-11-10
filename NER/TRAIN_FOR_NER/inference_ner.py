@@ -16,7 +16,7 @@ def get_rand_hex_color():
 
 def inference_ner_with_tags(checkpoint_path, tags, input_text, main_bool=False):
     
-    NER_TAGS_TO_KEEP = tags.split(',')
+    NER_TAGS_TO_KEEP = str(tags).split(',')
 
     tag_list_temp = list('O')
         
