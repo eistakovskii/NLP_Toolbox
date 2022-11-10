@@ -28,15 +28,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--export", type=bool, default=False, help="export the splits locally"
     )
-
-
     parser.add_argument(
         "--batch_size", type=int, default=8, help="batch size (8 or 16)"
     )
     parser.add_argument(
         "--max_steps",
         type=int,
-        default=5_000,
+        default=1_000,
         help="maximum training steps (1000, 3000, 5000 or 10000)",
     )
     parser.add_argument(
@@ -78,9 +76,19 @@ if __name__ == "__main__":
     tg_in = tg_in_t.split(',')
 
     exp_bool_in = args.export
-
+    
+    data_name = args.file_path.split('/') if '/' in args.file_path else args.file_path.split('\\')
+    
+    print(f'\nCREATING DATASET FROM {data_name[-1]}')
+    
     dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in, exp_bool=exp_bool_in).dataset
+    print(dataset['train'])
+    print(dataset['test'])
+    print(dataset['validation'])
 
+    print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
+    print(f'\nFINISHED CREATING DATASET\n')
+    
     label_names = dataset["train"].features["ner_tags"].feature.names
 
     id2label = {i: label for i, label in enumerate(label_names)}
@@ -165,10 +173,11 @@ if __name__ == "__main__":
         run_name = f"{args.max_steps}_steps_rubert",
         evaluation_strategy="steps",
         save_strategy="steps",
-        save_steps=1000,
-        logging_steps=1000,
+        save_steps=100,
+        logging_steps=100,
         max_steps=args.max_steps,
-        seed=42
+        seed=42,
+        report_to='none'
     )
 
     trainer = Trainer(
