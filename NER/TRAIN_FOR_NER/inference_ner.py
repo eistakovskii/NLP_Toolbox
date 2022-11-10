@@ -81,9 +81,8 @@ if __name__ == "__main__":
 
     ex = [{"text": doc_text,
         "ents": [{"start": x[0], "end": x[1], "label": x[2]} for x in start_end_labels]}]
-
     tagged_sent = displacy.render(ex, style="ent", manual=True, options=options, jupyter=False)
-
+    
     with open('tagged_temp.html','w') as f:
         f.write(tagged_sent)
     
