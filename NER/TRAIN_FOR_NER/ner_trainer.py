@@ -79,7 +79,7 @@ if __name__ == "__main__":
     
     data_name = args.file_path.split('/') if '/' in args.file_path else args.file_path.split('\\')
     
-    print(f'\nCREATING DATASET FROM {data_name[-1]}')
+    print(f'\nCREATING DATASET FROM {data_name[-1]}\n')
     
     dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in, exp_bool=exp_bool_in).dataset
     print(dataset['train'])
@@ -93,7 +93,9 @@ if __name__ == "__main__":
 
     id2label = {i: label for i, label in enumerate(label_names)}
     label2id = {v: k for k, v in id2label.items()}
-
+    
+    print(f'\nDOWNLOADING MODEL AND TOKENIZER\n')
+    
     tokenizer = AutoTokenizer.from_pretrained("DeepPavlov/rubert-base-cased", model_max_length=512, truncation=True)
     model = AutoModelForTokenClassification.from_pretrained(
         "DeepPavlov/rubert-base-cased", 
@@ -101,7 +103,8 @@ if __name__ == "__main__":
         id2label=id2label,
         label2id=label2id,
         )
-
+    
+    print(f'\nFINISHED DOWNLOADING\n')
     
     def tokenize_adjust_labels(all_samples_per_split):
         
