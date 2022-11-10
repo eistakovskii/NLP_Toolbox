@@ -25,7 +25,8 @@ python ner_trainer.py \
 
 Example code:
 ``` 
-python inference.py \
-    --model_name rubert \
-    --model_path rubert\rubert_10000 \
+python inference_ner.py \
+    --checkpoint_path PATH_TO_YOUR_MODEL \
+    --tags LOC,ORG,NAVY \ # Your tags separated with commas and w/o spaces
+    --input_text \ # Input here your text
 ```
