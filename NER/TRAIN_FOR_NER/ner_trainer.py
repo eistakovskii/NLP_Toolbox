@@ -12,6 +12,8 @@ import numpy as np
 
 import argparse
 
+import random
+import torch
 
 if __name__ == "__main__":
 
@@ -54,7 +56,19 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
+    
+    def set_random_seed(seed):
+        random.seed(seed)
+        np.random.seed(seed)
+        os.environ["PL_GLOBAL_SEED"] = str(seed)
+        os.environ["PYTHONHASHSEED"] = str(seed)
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+    
+    set_random_seed(42)
+    
     main_path_in = args.file_path
 
     tg_in_t = args.tags
@@ -78,13 +92,10 @@ if __name__ == "__main__":
         label2id=label2id,
         )
 
-    #Get the values for input_ids, token_type_ids, attention_mask
+    
     def tokenize_adjust_labels(all_samples_per_split):
         
         tokenized_samples = tokenizer.batch_encode_plus(all_samples_per_split["tokens"], max_length=512, truncation=True, is_split_into_words=True)
-        #tokenized_samples is not a datasets object so this alone won't work with Trainer API, hence map is used 
-        #so the new keys [input_ids, labels (after adjustment)]
-        #can be added to the datasets dict for each train test validation split
         total_adjusted_labels = []
         print(len(tokenized_samples["input_ids"]))
         for k in range(0, len(tokenized_samples["input_ids"])):
