@@ -57,6 +57,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     
+    os.environ["WANDB_DISABLED"] = "true"
+    
     def set_random_seed(seed):
         random.seed(seed)
         np.random.seed(seed)
@@ -66,7 +68,7 @@ if __name__ == "__main__":
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
-    
+     
     set_random_seed(42)
     
     main_path_in = args.file_path
@@ -123,9 +125,6 @@ if __name__ == "__main__":
 
     data_collator = DataCollatorForTokenClassification(tokenizer)
 
-    os.environ["WANDB_API_KEY"]="42277c5edc2cce1067dce1109dec6b3001d25270"
-    os.environ["WANDB_ENTITY"]="EISTAKOVSKII"
-    os.environ["WANDB_PROJECT"]="finetune_bert_ner_test"
     
     metric = load_metric("seqeval")
 
@@ -161,9 +160,8 @@ if __name__ == "__main__":
         learning_rate=args.learning_rate,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
-        weight_decay=0.01,
+        weight_decay=args.weight_decay,
         save_total_limit = 2,
-        report_to="wandb",
         run_name = f"{args.max_steps}_steps_rubert",
         evaluation_strategy="steps",
         save_strategy="steps",
@@ -186,7 +184,5 @@ if __name__ == "__main__":
     print("\nTRAINING STARTED!\n")
     
     trainer.train()
-    
-    wandb.finish()
 
     print("\nTRAINING FINISHED!\n")
