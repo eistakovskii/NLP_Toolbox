@@ -17,7 +17,7 @@ python ner_trainer.py \
     --file_path 'PATH_TO_YOUR_DATA/data_ner.txt' \
     --tags LOC,ORG,NAVY \ # Your tags separated with commas and w/o spaces
     --batch_size 16 \
-    --max_steps 10000 \
+    --max_steps 1000 \
     --learning_rate 2e-5 \
     --output_dir trained_models 
 ```
