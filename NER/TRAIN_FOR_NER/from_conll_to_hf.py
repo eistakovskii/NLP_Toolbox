@@ -172,37 +172,37 @@ class HF_NER_dataset(object):
     def validation(self):
         return self._dataset["validation"]
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()
     
-#     parser.add_argument(
-#         "--file_path", type=str, help="path to your conll file", required=True
-#     )
-#     parser.add_argument(
-#         "--tags", type=str, help="your NE tags", required=True
-#     )
-#     parser.add_argument(
-#         "--export", type=bool, default=False, help="export the splits locally"
-#     )
+    parser.add_argument(
+        "--file_path", type=str, help="path to your conll file", required=True
+    )
+    parser.add_argument(
+        "--tags", type=str, help="your NE tags", required=True
+    )
+    parser.add_argument(
+        "--export", type=bool, default=False, help="export the splits locally"
+    )
     
-#     args = parser.parse_args()
+    args = parser.parse_args()
     
-#     main_path_in = args.file_path
+    main_path_in = args.file_path
 
-#     tg_in_t = args.tags
+    tg_in_t = args.tags
     
-#     tg_in = tg_in_t.split(',')
+    tg_in = tg_in_t.split(',')
 
-#     exp_bool_in = args.export
+    exp_bool_in = args.export
 
-#     dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in, exp_bool=exp_bool_in).dataset
+    dataset = HF_NER_dataset(mp = main_path_in, tg = tg_in, exp_bool=exp_bool_in).dataset
 
-#     print(dataset['train'])
-#     print(dataset['test'])
-#     print(dataset['validation'])
+    print(dataset['train'])
+    print(dataset['test'])
+    print(dataset['validation'])
 
-#     print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
+    print("List of tags: ", dataset['train'].features['ner_tags'].feature.names)
 
 
-#     print("First sample: ", dataset['train'][0])
+    print("First sample: ", dataset['train'][0])
