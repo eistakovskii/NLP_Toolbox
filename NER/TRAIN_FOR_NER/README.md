@@ -31,7 +31,7 @@ python inference_ner.py \
     --input_text \ # Input here your text
 ```
 or in a notebook:
-``` 
+``` python
 from inference_ner import inference_ner_with_tags
 
 inference_ner_with_tags('/PATH_TOU_YOUR_MODEL/checkpoint-X/', 
