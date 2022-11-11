@@ -178,6 +178,7 @@ if __name__ == "__main__":
         save_strategy="steps",
         save_steps=100,
         logging_steps=100,
+        eval_steps=100,
         max_steps=args.max_steps,
         seed=42,
         report_to='none'
