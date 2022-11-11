@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 Multilingual setup:
 
-```
+``` shell
 python ner_trainer.py \
     --file_path 'PATH_TO_YOUR_DATA/data_ner.txt' \
     --tags LOC,ORG,MISC \ # Your tags separated with commas and w/o spaces
@@ -24,7 +24,7 @@ python ner_trainer.py \
 **Step $3$: Run Inference**
 
 Example code:
-``` 
+``` shell
 python inference_ner.py \
     --checkpoint_path PATH_TO_YOUR_MODEL \
     --tags LOC,ORG,MISC \ # Your tags separated with commas and w/o spaces
