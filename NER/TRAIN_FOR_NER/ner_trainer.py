@@ -1,8 +1,6 @@
 from from_conll_to_hf import *
 
-from transformers import AutoTokenizer
-from transformers import DataCollatorForTokenClassification
-from transformers import AutoModelForTokenClassification, TrainingArguments, Trainer
+from transformers import AutoTokenizer, DataCollatorForTokenClassification, AutoModelForTokenClassification, TrainingArguments, Trainer, EarlyStoppingCallback, IntervalStrategy
 from datasets import load_metric
 
 import os
@@ -172,16 +170,18 @@ if __name__ == "__main__":
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
         weight_decay=args.weight_decay,
-        save_total_limit = 2,
+        save_total_limit = 5,
         run_name = f"{args.max_steps}_steps_rubert",
-        evaluation_strategy="steps",
-        save_strategy="steps",
+        evaluation_strategy=IntervalStrategy.STEPS,
+        save_strategy=IntervalStrategy.STEPS,
         save_steps=100,
-        logging_steps=100,
-        eval_steps=100,
+        logging_steps=50,
+        eval_steps=50,
         max_steps=args.max_steps,
         seed=42,
-        report_to='none'
+        report_to='none',
+        metric_for_best_model = 'overall_f1',
+        load_best_model_at_end=True
     )
 
     trainer = Trainer(
