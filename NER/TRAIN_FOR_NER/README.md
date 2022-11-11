@@ -30,3 +30,11 @@ python inference_ner.py \
     --tags LOC,ORG,MISC \ # Your tags separated with commas and w/o spaces
     --input_text \ # Input here your text
 ```
+or in a notebook:
+``` 
+from inference_ner import inference_ner_with_tags
+
+inference_ner_with_tags('/PATH_TOU_YOUR_MODEL/checkpoint-X/', 
+                        ['LOC','ORG','MISC'], 
+                        'YOUR TEXT TO TAG')
+```                        
