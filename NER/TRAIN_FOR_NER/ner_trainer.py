@@ -112,6 +112,8 @@ if __name__ == "__main__":
         label2id=label2id,
         )
     
+    print(f'\nMODEL USED: args.model\n')
+    
     print(f'\nFINISHED DOWNLOADING\n')
     
     def tokenize_adjust_labels(all_samples_per_split):
