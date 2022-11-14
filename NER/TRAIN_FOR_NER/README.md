@@ -10,16 +10,16 @@ pip install -r requirements.txt
 
 **Step $2$: Run Training**
 
-Multilingual setup:
-
 ``` shell
 python ner_trainer.py \
-    --file_path 'PATH_TO_YOUR_DATA/data_ner.txt' \
-    --tags LOC,ORG,MISC \ # Your tags separated with commas and w/o spaces
+    --file_path PATH_TO_YOUR_DATA.txt \
+    --tags LOC,ORG,MISC \
     --batch_size 16 \
     --max_steps 1000 \
     --learning_rate 2e-5 \
-    --output_dir trained_models 
+    --output_dir trained_models \
+    --model MODEL NAME or PATH TO YOUR MODEL \
+    --nickname bert
 ```
 **Step $3$: Run Inference**
 
