@@ -112,7 +112,7 @@ if __name__ == "__main__":
         label2id=label2id,
         )
     
-    print(f'\nMODEL USED: args.model\n')
+    print(f'\nMODEL USED: {args.model}\n')
     
     print(f'\nFINISHED DOWNLOADING\n')
     
