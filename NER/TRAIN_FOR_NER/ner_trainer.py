@@ -48,9 +48,19 @@ if __name__ == "__main__":
         "--output_dir",
         type=str,
         default="rubert",
-        help="name for trained models folder",
+        help="name for trained models folder"
     )
-
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="your model name or its path",
+    )
+    parser.add_argument(
+        "--nickname",
+        default="temp_model",
+        type=str,
+        help="friendly model name",
+    )
     args = parser.parse_args()
     
     os.environ["WANDB_DISABLED"] = "true"
@@ -94,9 +104,9 @@ if __name__ == "__main__":
     
     print(f'\nDOWNLOADING MODEL AND TOKENIZER\n')
     
-    tokenizer = AutoTokenizer.from_pretrained("DeepPavlov/rubert-base-cased", model_max_length=512, truncation=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.model, model_max_length=512, truncation=True)
     model = AutoModelForTokenClassification.from_pretrained(
-        "DeepPavlov/rubert-base-cased", 
+        args.model, 
         num_labels=len(label_names),
         id2label=id2label,
         label2id=label2id,
@@ -165,13 +175,13 @@ if __name__ == "__main__":
         return flattened_results
 
     training_args = TrainingArguments(
-        output_dir=f"{args.output_dir}/rubert_{args.max_steps}",
+        output_dir=f"{args.output_dir}/{args.nickname}_{args.max_steps}",
         learning_rate=args.learning_rate,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
         weight_decay=args.weight_decay,
         save_total_limit = 5,
-        run_name = f"{args.max_steps}_steps_rubert",
+        run_name = f"{args.max_steps}_{args.nickname}",
         evaluation_strategy=IntervalStrategy.STEPS,
         save_strategy=IntervalStrategy.STEPS,
         save_steps=100,
