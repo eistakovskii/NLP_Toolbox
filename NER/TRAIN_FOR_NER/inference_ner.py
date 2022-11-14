@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    tagged_sent = inference_ner_with_tags(args.scheckpoint_path, args.tags, args.input_text, main_bool=True)
+    tagged_sent = inference_ner_with_tags(args.checkpoint_path, args.tags, args.input_text, main_bool=True)
     
     with open('tagged_temp.html','w') as f:
         f.write(tagged_sent)
