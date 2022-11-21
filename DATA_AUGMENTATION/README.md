@@ -6,5 +6,5 @@ Here you can find various code for augmenting your data, mainly by scraping
 * [*scr_dict_cc.py*](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_dict_cc.py) - again selenium but in this case I extract only specific words: I wrote this code to extract all the german words with tags - vulgar, rude, coll etc.
 ![alt text](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/dict_scr.png)
 
-* [*scr_dict_cc.py*](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_reverso_freq.py) - here I used Selenium to extract most frequent words/translations of the english toxic words and phrases of French and German from context Reverso pages
+* [*scr_reverso_freq.py*](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_reverso_freq.py) - here I used Selenium to extract most frequent words/translations of the english toxic words and phrases of French and German from context Reverso pages
 ![alt text](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_reverso_freq.png)
