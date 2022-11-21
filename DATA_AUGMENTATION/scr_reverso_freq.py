@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 from tqdm.auto import tqdm
 
-driver = webdriver.Chrome(executable_path=r'C:\work\chromedriver_win32\chromedriver.exe')
+driver = webdriver.Chrome(executable_path=r'PATH_TO_YOUR_DRIVER\chromedriver.exe')
 
 not_extracted_fr = list()
 not_extracted_de = list()
@@ -12,7 +12,7 @@ out_de = list()
 
 print('\nSTARTING...')
 
-with open(r'C:\work\temp_data_output\vulgar_data\all_toxic_en.txt', mode = 'r', encoding = 'utf-8') as f:
+with open(r'PATH_TO_YOUR_LIST_OF_TOXIC_WORDS.txt', mode = 'r', encoding = 'utf-8') as f:
     temp_data = f.readlines()
     vulg_all_data = [i.strip() for i in temp_data]
 
