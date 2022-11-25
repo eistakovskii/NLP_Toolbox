@@ -186,9 +186,9 @@ if __name__ == "__main__":
         run_name = f"{args.max_steps}_{args.nickname}",
         evaluation_strategy=IntervalStrategy.STEPS,
         save_strategy=IntervalStrategy.STEPS,
-        save_steps=100,
-        logging_steps=50,
-        eval_steps=50,
+        save_steps=200,
+        logging_steps=100,
+        eval_steps=100,
         max_steps=args.max_steps,
         seed=42,
         report_to='none',
@@ -203,11 +203,16 @@ if __name__ == "__main__":
         eval_dataset=tokenized_dataset["validation"],
         data_collator=data_collator,
         tokenizer=tokenizer,
-        compute_metrics=compute_metrics
+        compute_metrics=compute_metrics,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience = 4, early_stopping_threshold = 0.1)
     )
     
     print("\nTRAINING STARTED!\n")
     
     trainer.train()
+    
+    print("\nTRAINING STARTED!\n")
+    
+    trainer.evaluate(tokenized_dataset["test])
 
     print("\nTRAINING FINISHED!\n")
