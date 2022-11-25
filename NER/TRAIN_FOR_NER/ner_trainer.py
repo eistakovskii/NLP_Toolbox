@@ -204,7 +204,7 @@ if __name__ == "__main__":
         data_collator=data_collator,
         tokenizer=tokenizer,
         compute_metrics=compute_metrics,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience = 4, early_stopping_threshold = 0.1)
+        callbacks=[EarlyStoppingCallback(early_stopping_patience = 4, early_stopping_threshold = 0.1)]
     )
     
     print("\nTRAINING STARTED!\n")
