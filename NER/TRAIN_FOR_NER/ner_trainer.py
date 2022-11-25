@@ -213,6 +213,6 @@ if __name__ == "__main__":
     
     print("\nTRAINING STARTED!\n")
     
-    trainer.evaluate(tokenized_dataset["test])
-
+    trainer.evaluate(tokenized_dataset["test"])
+    
     print("\nTRAINING FINISHED!\n")
