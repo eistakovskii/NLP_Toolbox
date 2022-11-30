@@ -1,6 +1,5 @@
 transformers
 datasets
-os
 numpy
 argparse
 random
