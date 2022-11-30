@@ -16,5 +16,6 @@ python classification_trainer.py \
     --max_epoch_num 10 \
     --output_dir trained_models \
     --model MODEL NAME or PATH TO YOUR MODEL \
-    --nickname bert
+    --nickname bert \
+    --say_when 5
 ```
