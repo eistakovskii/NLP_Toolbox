@@ -52,7 +52,7 @@ if __name__ == "__main__":
         "--nickname",
         default="temp_model",
         type=str,
-        help="friendly model name", required=False,
+        help="friendly model name", required=True,
     )
     parser.add_argument(
         "--say_when",
@@ -60,6 +60,7 @@ if __name__ == "__main__":
         default=5,
         help="Number of epochs of no improvement after which the training must stop ", required=True
     )
+    
     args = parser.parse_args()
     
     os.environ["WANDB_DISABLED"] = "true"
@@ -136,7 +137,7 @@ if __name__ == "__main__":
     logging_steps_num = len(train_ds) // batch_size
 
     training_args = TrainingArguments(
-        output_dir = repo_name,
+        output_dir=f"{args.output_dir}/{args.nickname}_{args.max_epoch_num}ep",
         learning_rate = args.learning_rate,
         per_device_train_batch_size = batch_size,
         per_device_eval_batch_size = batch_size*4,
