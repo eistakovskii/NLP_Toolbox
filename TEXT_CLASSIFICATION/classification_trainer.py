@@ -178,7 +178,7 @@ if __name__ == "__main__":
 
     print("\nEVALUATING ON THE TEST SPLIT...")
 
-    trainer.evaluate(tokenized_test)
+    print(trainer.evaluate(tokenized_test))
 
     print("\nTRAINING FINISHED!\n")
 
