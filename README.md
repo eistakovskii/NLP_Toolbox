@@ -6,6 +6,6 @@ This repository contains various finished or on-going projects involving Natural
 
 * NER - here you can find different NER related scripts and tools
 
-* TEXT_CLASSIFICATION - here you can find different text classification related scripts and tools
+* TEXT_CLASSIFICATION - here you can find different text/binary classification related scripts and tools
 
-* NLP_tools - miscallenous NLP tools 
+* NLP_tools - miscellaneous NLP tools 
