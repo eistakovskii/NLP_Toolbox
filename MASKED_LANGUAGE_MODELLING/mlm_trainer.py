@@ -154,7 +154,7 @@ if __name__ == "__main__":
         eval_dataset = lm_dataset["test"],
         data_collator = data_collator,
         tokenizer = tokenizer,
-        callbacks = [EarlyStoppingCallback(early_stopping_patience = 5, early_stopping_threshold = 0.01)]
+        callbacks = [EarlyStoppingCallback(early_stopping_patience = args.say_when, early_stopping_threshold = 0.01)]
     )
 
     print("\nTRAINING STARTED!")
