@@ -32,7 +32,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--max_steps",
         type=int,
-        default=1_000,
+        default=2_000,
         help="maximum training steps (1000, 3000, 5000 or 10000)",
     )
     parser.add_argument(
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--say_when",
         type=int,
-        default=5,
+        default=8,
         help="Number of epochs of no improvement after which the training must stop ", required=False
     )
     parser.add_argument(
@@ -223,9 +223,9 @@ if __name__ == "__main__":
     
     trainer.train()
     
-    print("\nTRAINING STARTED!\n")
+    print("\nEVALUATING ON THE TEST SPLIT...")
     
-    trainer.evaluate(tokenized_dataset["test"])
+    print(trainer.evaluate(tokenized_dataset["test"]))
     
     print("\nTRAINING FINISHED!\n")
     
