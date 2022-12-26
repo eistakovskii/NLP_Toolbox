@@ -1,4 +1,4 @@
-# Natural Language Processing projects
+# Natural Language Processing Projects
 
 This repository contains various finished or on-going projects involving Natural Language Processing (NLP).
 
