@@ -228,3 +228,5 @@ if __name__ == "__main__":
     trainer.evaluate(tokenized_dataset["test"])
     
     print("\nTRAINING FINISHED!\n")
+    
+    print(f"\nTHE BEST MODEL LOCATED AT {trainer.state.best_model_checkpoint} WITH F1 {trainer.state.best_metric}\n")
