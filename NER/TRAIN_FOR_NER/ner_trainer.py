@@ -61,6 +61,18 @@ if __name__ == "__main__":
         type=str,
         help="friendly model name",
     )
+    parser.add_argument(
+        "--say_when",
+        type=int,
+        default=5,
+        help="Number of epochs of no improvement after which the training must stop ", required=False
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=0.05,
+        help="Number of epochs of no improvement after which the training must stop ", required=False
+    )
     args = parser.parse_args()
     
     os.environ["WANDB_DISABLED"] = "true"
@@ -204,7 +216,7 @@ if __name__ == "__main__":
         data_collator=data_collator,
         tokenizer=tokenizer,
         compute_metrics=compute_metrics,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience = 4, early_stopping_threshold = 0.1)]
+        callbacks=[EarlyStoppingCallback(early_stopping_patience = args.say_when, early_stopping_threshold = args.threshold)]
     )
     
     print("\nTRAINING STARTED!\n")
