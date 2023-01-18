@@ -85,4 +85,4 @@ def get_num(inp_str: str) -> tuple:
             else:
                 return '1', ' '.join(toks)
         except:    
-                return '1', ' '.join(toks) 
+                return '1', ' '.join(toks)    
