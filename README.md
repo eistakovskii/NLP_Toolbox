@@ -11,3 +11,5 @@ This repository contains various finished or on-going projects involving Natural
 * NLP_tools - miscellaneous NLP tools 
 
 * MASKED_LANGUAGE_MODELLING - here you can find different MLM (Masked Language Modelling) related scripts
+
+* TOPIC_MODELLING - here you can find different scripts that can be freely used for the task of topic modelling
