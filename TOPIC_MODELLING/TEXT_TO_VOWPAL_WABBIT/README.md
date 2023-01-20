@@ -1,2 +1,2 @@
-[*The vowpal_dataset class]() helps you to turn your incoming texts (inside a list) into a list with documents converted from plain text to [*Vowpal Wabbit*](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format) format which later can be freely used for the topic modelling task.
+[The vowpal_dataset class]() helps you to turn your incoming texts (inside a list) into a list with documents converted from plain text to [*Vowpal Wabbit*](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format) format which later can be freely used for the topic modelling task.
 Originally the class was written to be used for topic modelling with [BigARTM](https://github.com/bigartm/bigartm).
