@@ -1,0 +1,6 @@
+pycld3 
+razdel
+pymorphy2
+spacy
+nltk
+tqdm
