@@ -1,3 +1,4 @@
+argparse
 pycld3 
 razdel
 pymorphy2
