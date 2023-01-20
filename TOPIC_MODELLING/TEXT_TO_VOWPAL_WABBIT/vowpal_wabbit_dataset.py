@@ -1,3 +1,4 @@
+import argparse
 import spacy
 nlp = spacy.load("en_core_web_sm")
 import cld3
@@ -179,3 +180,35 @@ class vw_dataset:
         result = " ".join(filter(lambda x: str(x) if x is not None else '', tokens_filtered))
         tokens_filtered = [_.text for _ in razdel.tokenize(result.lower())]
     return tokens_filtered
+if __name__ == '__main__':
+  
+  parser = argparse.ArgumentParser()
+
+  parser.add_argument(
+      "--text_file_path", type=str, help="path to your text file with a text on each line separately", required=True
+  )
+  parser.add_argument(
+      "--which_n_grams", type=str, help="", help="specify which n_grams you need separated by a comma with no space", default='2', required=True
+  )
+  parser.add_argument(
+      "--dir_path", type=str, help="path to cloned directory", required=True, help="export the splits locally"
+  )
+  
+  args = parser.parse_args()
+  text_file_path = args.text_file_path
+  directory_path = args.dir_path
+  
+  try:
+    n_grams_l = [int(i) for i in args.which_n_grams.split(',')]
+    with open(text_file_path, mode = "r", encoding='utf-8') as outfile:
+      texts_input = outfile.readlines()
+      texts_input = [i.strip() for i in texts_input]
+    print('\nStarted!')
+    temp_out_vw = vw_dataset(texts_input, n_grams_l, directory_path)
+    with open(rf'{dir_path}\output_vw_dataset.txt', mode = "w", encoding='utf-8') as outfile2:
+      for i in temp_out_vw:
+        outfile2.write(str(i)+'\n')
+    print('\nFinished!')
+    print(f'The dataset exported to {directory_path}')
+  except:
+    print('Wrong n_grams list supplied!') 
