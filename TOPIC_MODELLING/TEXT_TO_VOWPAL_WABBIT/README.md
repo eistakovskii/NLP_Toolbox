@@ -1,2 +1,4 @@
+**Text to Vowpal Wabbit dataset**
+
 [The vowpal_dataset class](https://github.com/eistakovskii/NLP_projects/blob/main/TOPIC_MODELLING/TEXT_TO_VOWPAL_WABBIT/vowpal_wabbit_dataset.py) helps you to turn your incoming texts in Russian (inside a list) into a list with documents converted from plain text to [*Vowpal Wabbit*](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Input-format) format which later can be freely used for the topic modelling task.
 Originally the class was written to be used for topic modelling with [BigARTM](https://github.com/bigartm/bigartm).
