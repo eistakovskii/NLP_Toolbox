@@ -12,4 +12,4 @@ This repository contains various finished or on-going projects involving Natural
 
 * [MASKED_LANGUAGE_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/MASKED_LANGUAGE_MODELLING) - here you can find different MLM (Masked Language Modelling) related scripts
 
-* [TOPIC_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/TOPIC_MODELLING/TEXT_TO_VOWPAL_WABBIT) - here you can find different scripts that can be freely used for the task of topic modelling
+* [TOPIC_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/TOPIC_MODELLING) - here you can find different scripts that can be freely used for the task of topic modelling
