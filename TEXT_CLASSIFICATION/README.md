@@ -1,4 +1,4 @@
-## Fine-tune your target model for Text Classification
+## Fine-tune your target model for (Binary) Text Classification 
 
 ## Setup
 
