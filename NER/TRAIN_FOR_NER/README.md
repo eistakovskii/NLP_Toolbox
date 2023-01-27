@@ -1,6 +1,6 @@
 ## Fine-tune your target model for Named Entity Recognition
 
-## Setup
+## Training
 
 **Step $1$: Install dependencies**
 
@@ -21,9 +21,9 @@ python ner_trainer.py \
     --model MODEL NAME or PATH TO YOUR MODEL \
     --nickname bert
 ```
-**Step $3$: Run Inference**
+## Inference
+To run the trained model in inference:
 
-Example code:
 ``` shell
 python inference_ner.py \
     --checkpoint_path PATH_TO_YOUR_MODEL \
