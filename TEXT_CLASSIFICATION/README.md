@@ -18,4 +18,6 @@ python classification_trainer.py \
     --model MODEL NAME or PATH TO YOUR MODEL \
     --nickname bert \
     --say_when 5
+    --zero_means WHAT_0_STANDS_FOR
+    --one_means WHAT_1_STANDS_FOR
 ```
