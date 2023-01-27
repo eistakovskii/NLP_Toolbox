@@ -21,3 +21,4 @@ python classification_trainer.py \
     --zero_means WHAT_0_STANDS_FOR
     --one_means WHAT_1_STANDS_FOR
 ```
+## Inference
