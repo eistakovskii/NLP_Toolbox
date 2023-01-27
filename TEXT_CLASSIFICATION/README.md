@@ -1,6 +1,6 @@
 ## Fine-tune your target model for (Binary) Text Classification 
 
-## Setup
+## Training
 
 **Step $1$: Install dependencies**
 
