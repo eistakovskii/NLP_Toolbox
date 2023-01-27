@@ -16,10 +16,10 @@ python classification_trainer.py \ # or classification_adapter_trainer.py
     --max_epoch_num 10 \
     --output_dir trained_models \
     --model MODEL NAME or PATH TO YOUR MODEL \
-    --nickname bert \
+    --nickname YOUR_MODEL \ # e.g. bert-base-multilingual-cased
     --say_when 5 \
-    --zero_means WHAT_0_STANDS_FOR \
-    --one_means WHAT_1_STANDS_FOR
+    --zero_means WHAT_0_STANDS_FOR \ # e.g. Negative
+    --one_means WHAT_1_STANDS_FOR # e.g. Positive
 ```
 ## Inference
 
