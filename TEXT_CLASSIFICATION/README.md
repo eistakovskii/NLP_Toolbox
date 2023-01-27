@@ -38,8 +38,8 @@ classifier("YOUR_TEXT_TO_CLASSIFY")
 ``` python
 from transformers import AutoTokenizer, AutoAdapterModel, pipeline
 
-tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-cased')
-model = AutoAdapterModel.from_pretrained('bert-base-multilingual-cased')
+tokenizer = AutoTokenizer.from_pretrained('YOUR_MAIN_MODEL')
+model = AutoAdapterModel.from_pretrained('YOUR_MAIN_MODEL')
 
 adapter_name = model.load_adapter(r"PATH_TO_YOUR_ADAPTER")
 model.load_head(r"PATH_TO_YOUR_ADAPTER")
