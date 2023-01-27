@@ -60,6 +60,18 @@ if __name__ == "__main__":
         default=5,
         help="Number of epochs of no improvement after which the training must stop ", required=True
     )
+    parser.add_argument(
+        "--zero_means",
+        type=str,
+        default='LABEL_0',
+        help="what the label 0 means for your task", required=False
+    )
+    parser.add_argument(
+        "--one_means",
+        type=str,
+        default='LABEL_1',
+        help="what the label 1 means for your task", required=False
+    )
     
     args = parser.parse_args()
     
@@ -96,12 +108,12 @@ if __name__ == "__main__":
     tokenized_test = test_ds.map(preprocess_function, batched=True).remove_columns('text')
     
     id2label = {
-        "0": "neutral",
-        "1": "toxic"
+        "0": args.zero_means,
+        "1": args.one_means
     }
     label2id = {
-        "neutral": 0,
-        "toxic": 1
+        args.zero_means: 0,
+        args.one_means: 1
     }
 
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
