@@ -11,7 +11,7 @@ pip install -r requirements.txt
 **Step $2$: Run Training**
 
 ``` shell
-python classification_trainer.py \
+python classification_trainer.py \ # or classification_adapter_trainer.py
     --file_path PATH_TO_YOUR_DATA.csv \
     --max_epoch_num 10 \
     --output_dir trained_models \
