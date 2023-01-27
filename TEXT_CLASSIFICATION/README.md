@@ -17,8 +17,8 @@ python classification_trainer.py \ # or classification_adapter_trainer.py
     --output_dir trained_models \
     --model MODEL NAME or PATH TO YOUR MODEL \
     --nickname bert \
-    --say_when 5
-    --zero_means WHAT_0_STANDS_FOR
+    --say_when 5 \
+    --zero_means WHAT_0_STANDS_FOR \
     --one_means WHAT_1_STANDS_FOR
 ```
 ## Inference
