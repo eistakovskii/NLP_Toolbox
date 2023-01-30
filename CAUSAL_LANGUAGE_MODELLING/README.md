@@ -20,3 +20,16 @@ python clm_trainer.py \
     --say_when 2
     --learning_rate 1e-5
 ```
+## Inference
+
+**Quick way to run your model in inference mode**
+
+``` python
+from transformers import pipeline
+
+prompt = 'Петька ваш'
+
+generator = pipeline("text-generation", model='PATH_TO_THE_MODEL')
+
+generator(prompt)
+```
