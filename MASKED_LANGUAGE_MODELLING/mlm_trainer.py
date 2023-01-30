@@ -127,7 +127,6 @@ if __name__ == "__main__":
     training_args = TrainingArguments(
         output_dir = f"{args.output_dir}/{args.nickname}_{k_steps}k_steps",
         learning_rate = args.learning_rate,
-        weight_decay = 0.01,
         push_to_hub=False,
         report_to = 'none',
         save_total_limit = 3,
