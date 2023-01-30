@@ -1,6 +1,6 @@
 ## Fine-tune your target model for Masked Language Modelling
 
-## Setup
+## Training
 
 **Step $1$: Install dependencies**
 
