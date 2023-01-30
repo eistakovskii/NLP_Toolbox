@@ -17,7 +17,7 @@ python clm_trainer.py \
     --output_dir trained_models \
     --model MODEL NAME or PATH TO YOUR MODEL \
     --nickname rugpt3 \
-    --say_when 2
+    --say_when 2 \
     --learning_rate 1e-5
 ```
 ## Inference
