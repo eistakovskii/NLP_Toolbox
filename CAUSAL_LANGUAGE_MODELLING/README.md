@@ -1,6 +1,6 @@
 ## Fine-tune your target model for Causal Language Modelling
 
-## Setup
+## Training
 
 **Step $1$: Install dependencies**
 
