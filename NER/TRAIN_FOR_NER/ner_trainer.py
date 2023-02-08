@@ -47,7 +47,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output_dir",
         type=str,
-        default="rubert",
+        default="trained_models",
         help="name for trained models folder"
     )
     parser.add_argument(
