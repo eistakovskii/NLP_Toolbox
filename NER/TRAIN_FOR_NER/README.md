@@ -11,15 +11,15 @@ pip install -r requirements.txt
 **Step $2$: Run Training**
 
 ``` shell
-python ner_trainer.py \
+python ner_trainer.py \ # or ner_adapter_trainer.py
     --file_path PATH_TO_YOUR_DATA.txt \
     --tags LOC,ORG,MISC \
     --batch_size 16 \
     --max_steps 1000 \
     --learning_rate 2e-5 \
     --output_dir trained_models \
-    --model MODEL NAME or PATH TO YOUR MODEL \
-    --nickname bert
+    --model MODEL NAME or PATH TO YOUR MODEL \ # e.g. bert-base-multilingual-cased
+    --nickname mbert
 ```
 ## Inference
 To run the trained model in inference:
