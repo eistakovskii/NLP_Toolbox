@@ -15,7 +15,7 @@ python ner_trainer.py \ # or ner_adapter_trainer.py
     --file_path PATH_TO_YOUR_DATA.txt \
     --tags LOC,ORG,MISC \
     --batch_size 16 \
-    --max_steps 1000 \
+    --max_steps 3000 \
     --learning_rate 2e-5 \
     --output_dir trained_models \
     --model MODEL NAME or PATH TO YOUR MODEL \ # e.g. bert-base-multilingual-cased
