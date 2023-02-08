@@ -74,6 +74,12 @@ if __name__ == "__main__":
         default=0.05,
         help="Number of epochs of no improvement after which the training must stop ", required=False
     )
+    parser.add_argument(
+        "--tf_weights",
+        type=bool,
+        default=0,
+        help="Import tensorflow weights", required=False
+    )
     args = parser.parse_args()
     
     os.environ["WANDB_DISABLED"] = "true"
@@ -120,7 +126,7 @@ if __name__ == "__main__":
     config = AutoConfig.from_pretrained(args.model, num_label=len(label_names), id2label=id2label, label2id=label2id)
     
     
-    model = AutoModelWithHeads.from_pretrained(args.model)
+    model = AutoModelWithHeads.from_pretrained(args.model, from_tf=args.tf_weights)
     model.add_adapter("ner")
 
     model.add_tagging_head("ner_head", num_labels=len(label_names), id2label=id2label)
