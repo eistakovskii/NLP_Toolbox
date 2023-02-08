@@ -73,6 +73,12 @@ if __name__ == "__main__":
         default=0.05,
         help="Number of epochs of no improvement after which the training must stop ", required=False
     )
+    parser.add_argument(
+        "--tf_weights",
+        type=bool,
+        default=0,
+        help="Import tensorflow weights", required=False
+    )
     args = parser.parse_args()
     
     os.environ["WANDB_DISABLED"] = "true"
@@ -122,7 +128,7 @@ if __name__ == "__main__":
         num_labels=len(label_names),
         id2label=id2label,
         label2id=label2id,
-        )
+        from_tf = args.tf_weights)
     
     print(f'\nMODEL USED: {args.model}\n')
     
