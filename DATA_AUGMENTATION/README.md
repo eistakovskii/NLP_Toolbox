@@ -8,3 +8,5 @@ Here you can find various code for augmenting your data, mainly by scraping
 
 * [*scr_reverso_freq.py*](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_reverso_freq.py) - here I used Selenium to extract most frequent words/translations of the english toxic words and phrases of French and German from context Reverso pages
 ![alt text](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_reverso_freq.png)
+
+* [*scr_vk_group.py*](https://github.com/eistakovskii/NLP_projects/blob/main/DATA_AUGMENTATION/scr_vk_group.py) - in this script I used Selenium to scrape texts from posts on the page of a VK group
