@@ -1,5 +1,7 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, EarlyStoppingCallback, IntervalStrategy,DataCollatorWithPadding
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, EarlyStoppingCallback, IntervalStrategy, DataCollatorWithPadding
 from datasets import load_metric
+
+from tqdm.auto import tqdm
 
 import os
 
