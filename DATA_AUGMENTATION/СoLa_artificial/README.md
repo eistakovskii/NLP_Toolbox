@@ -1,4 +1,4 @@
-## Prepare an artificila CoLa dataset for a target language
+## Prepare an artificial CoLa dataset for a target language
 
 ## Training
 
