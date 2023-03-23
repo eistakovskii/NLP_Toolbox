@@ -40,7 +40,7 @@ def pull_from_reverso(path_driver: str, path_curr_dir: str, path_target_words: s
         time.sleep(2) # wait until fully loaded
         skipped = 0
         
-        num_words_av = int(driver.find_element(By.XPATH, f'/html/body/div[4]/section[1]/div[5]/p/span[1]').text) # number of sentences to be possibly extracted
+        num_words_av = int(driver.find_element(By.XPATH, f'/html/body/div[4]/section[1]/div[5]/p/span[2]').text) # number of sentences to be possibly extracted
 
         print(f'NUMBER OF WORDS TO EXTRACT: {num_words_av}')
 
