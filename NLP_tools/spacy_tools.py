@@ -1,3 +1,7 @@
+import spacy
+# !python3 -m spacy download ru_core_news_sm
+nlp = spacy.load("ru_core_news_sm")
+
 def get_pp(key_w: str, sent: str, , verbose: bool=False):
   """
   DESCRIPTION:
