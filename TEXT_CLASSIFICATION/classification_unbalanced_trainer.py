@@ -179,7 +179,8 @@ if __name__ == "__main__":
         load_best_model_at_end = True
         )
     
-    class_weights = torch.tensor([0.5, 1.5],dtype=torch.float)
+    class_weights = train_ds.num_rows / (2 * np.bincount(train_ds['label']))
+    class_weights = torch.tensor(class_weights, dtype=torch.float)
     class_weights = class_weights.to(torch.device('cuda'))
     
     class CustomTrainer(Trainer):
@@ -189,6 +190,7 @@ if __name__ == "__main__":
             logits = outputs.get("logits")
             loss_fct = nn.CrossEntropyLoss(weight=class_weights)
             loss = loss_fct(logits.view(-1, self.model.config.num_labels), labels.view(-1))
+            
             return (loss, outputs) if return_outputs else loss
     
     trainer = CustomTrainer(
