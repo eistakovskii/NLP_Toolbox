@@ -14,4 +14,4 @@ This repository contains various finished or on-going projects involving Natural
 
 * [CAUSAL_LANGUAGE_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/CAUSAL_LANGUAGE_MODELLING) - same as above but with some inference mode code and instructions
 
-* [TOPIC_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/TOPIC_MODELLING) - at this folder you can find a class which generates vowpal type dataset which is supposed to be used in the unsupervised BigARTM model.
+* [TOPIC_MODELLING](https://github.com/eistakovskii/NLP_projects/tree/main/TOPIC_MODELLING) - at this folder you can find a class which generates vowpal type dataset which is supposed to be used in the unsupervised BigARTM model
