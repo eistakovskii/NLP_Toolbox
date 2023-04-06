@@ -22,7 +22,7 @@ def embs_from_str_mlm(inp_str: str, extractor):
       temp_m_c_2[i, :] = np.array(temp_vecs[i])
   return np.average(temp_m_c_2, axis=0)
   
-def embs_from_str_labse(input_str: str, model_curr, tokenizer_curr):
+def cls_embs_from_mlm(input_str: str, model_curr, tokenizer_curr):
   '''
   Use this function to find an embedding from a whole sentence using LaBSE type of model
 
@@ -40,3 +40,28 @@ def embs_from_str_labse(input_str: str, model_curr, tokenizer_curr):
   embeddings = torch.nn.functional.normalize(embeddings)
 
   return embeddings
+
+def embs_from_str_mlm(data_in: list, model_curr, tokenizer_curr):
+  """
+  This function exploits the NSP (next sentece prediction) task with which the Bert was pretrained along the MLM task
+  and uses [CLS] token to encode the whole sentence
+  
+  Input:
+      data_in: your data in the form of list of strings
+      model_curr: bert model to vectorize the strings
+      tokenizer_curr: model's tokenizer
+  Output:
+      out_matrix: as the name suggests the function returns a numpy matrix with the following dimensions: (number of data samples, 768) 
+  """
+  data_len = len(data_in)
+  out_matrix = np.zeros((data_len, 768)) # Initiate with zeros a matrix with dimensions (number of train sample, 768)
+  
+  for ind, val in tqdm(enumerate(data_in)):
+      input_ids = torch.tensor(tokenizer_curr.encode(val)).unsqueeze(0).to('cuda') 
+      outputs = model_curr(input_ids) # Forward pass with the input
+      last_hidden_states = outputs[0]
+      cls_token = last_hidden_states[0][0] # Extract the CLS token and discard everything else
+      out_matrix[ind, :] = cls_token.detach().cpu().numpy() # Insert the cls token in the matrix intitiated above
+  
+  return out_matrix
+
