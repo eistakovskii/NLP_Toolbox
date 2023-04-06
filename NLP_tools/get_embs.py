@@ -1,8 +1,6 @@
-from transformers import AutoModelForTokenClassification, AutoModel, AutoTokenizer, pipeline
-
 import numpy as np
-
 import torch
+from tqdm.auto import tqdm
 
 def embs_from_str_mlm(inp_str: str, extractor):
   '''
@@ -18,8 +16,10 @@ def embs_from_str_mlm(inp_str: str, extractor):
   temp_vecs = temp_vecs[1:-1]
   temp_num_vecs_len = len(temp_vecs)
   temp_m_c_2 = np.zeros((temp_num_vecs_len, 768))
+  
   for i, _ in enumerate(temp_vecs):
       temp_m_c_2[i, :] = np.array(temp_vecs[i])
+  
   return np.average(temp_m_c_2, axis=0)
   
 def cls_embs_from_mlm(input_str: str, model_curr, tokenizer_curr):
@@ -44,7 +44,8 @@ def cls_embs_from_mlm(input_str: str, model_curr, tokenizer_curr):
 def embs_from_str_mlm(data_in: list, model_curr, tokenizer_curr):
   """
   This function exploits the NSP (next sentece prediction) task with which the Bert was pretrained along the MLM task
-  and uses [CLS] token to encode the whole sentence
+  and uses [CLS] token to encode the whole sentence.
+  Note that this function assumes that your using GPU
   
   Input:
       data_in: your data in the form of list of strings
