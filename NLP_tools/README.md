@@ -9,3 +9,5 @@ This repository contains various tools that are practically useful for NLP relat
 * [*metrics_for_nmt.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/metrics_for_nmt.py) - various metrics functions for neural machine translation (NMT)
 
 * [*pymorphy_tools.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/pymorphy_tools.py) - various useful pymorphy tools for working with Russian strings
+
+* [*spacy_tools.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/spacy_tools.py) - various useful spacy tools for working with Russian strings
