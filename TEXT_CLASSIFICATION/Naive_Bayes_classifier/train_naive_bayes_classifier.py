@@ -32,7 +32,7 @@ class naive_bayes_classifier:
         
         df = pd.read_csv(input_data_path, encoding='utf-8')
         
-        texts = df['text'].to_list() # Use only text column
+        texts = df['text'].to_list()
         labels = df['label'].to_list()
 
         train_texts, self.test_texts, train_labels, self.test_labels = train_test_split(texts, labels, test_size=0.2, random_state=42)
@@ -197,6 +197,7 @@ class naive_bayes_classifier:
         self.logprior, self.loglikelihood = train_naive_bayes(self.freqs, train_labels)
 
         if verbose: print('\nTRAINING FINISHED!')
+    
     def process_tweet(self, tweet):
         """Process tweet function.
         Input:
@@ -234,6 +235,7 @@ class naive_bayes_classifier:
                 # tweets_clean.append(stem_word)
 
         return tweets_clean
+    
     def naive_bayes_predict(self, tweet):
         '''
         Input:
@@ -259,6 +261,7 @@ class naive_bayes_classifier:
                 p += self.loglikelihood[word]
 
         return p
+    
     def test_naive_bayes(self, verbose:bool = True):
         """
         Input:
@@ -292,3 +295,20 @@ class naive_bayes_classifier:
         print(f"\nNaive Bayes test set accuracy = {accuracy:.4f}")
         
         pass
+ 
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument(
+        "--file_path", type=str, help="path to your CSV file", required=True
+    )
+    parser.add_argument(
+        "--output_path", type=str, help="your desired output path", required=True
+    )
+
+    args = parser.parse_args()
+
+    clf = naive_bayes_classifier(args.file_path, args.output_path)
+
+    clf.test_naive_bayes()
