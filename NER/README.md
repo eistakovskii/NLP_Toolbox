@@ -1,4 +1,4 @@
-# NER classification using transformer model
+# Named Entity Recognition (NER) using transformer model
 
 In this directory you can find two training scripts for binary classifiers:
 
