@@ -2,7 +2,7 @@ import spacy
 # !python3 -m spacy download ru_core_news_sm
 nlp = spacy.load("ru_core_news_sm")
 
-def get_pp(key_w: str, sent: str, , verbose: bool=False):
+def get_pp(key_w: str, sent: str, verbose: bool=False):
   """
   DESCRIPTION:
   This function takes in a sentence in russian and a target noun and returns a prepositional group with this targer noun.
