@@ -3,19 +3,19 @@ import spacy
 nlp = spacy.load("ru_core_news_sm")
 
 def get_pp(key_w: str, sent: str, verbose: bool=False):
-  """
-  DESCRIPTION:
-  This function takes in a sentence in russian and a target noun and returns a prepositional group with this targer noun.
-  E.g. sent - Мне нужной найти картину с портретом поэта, которуя я упоминал вчера.
-       key_w - картин
-       output - картину с портретом поэта
-  INPUT:
-  key_w: head word of your prepositional phrase
-  sent: your input sentence
-  
-  Output:
-  The function returns a string with the target prepositional group phrase
-  """
+    """
+    DESCRIPTION:
+    This function takes in a sentence in russian and a target noun and returns a prepositional group with this targer noun.
+    E.g. sent - Мне нужной найти картину с портретом поэта, которуя я упоминал вчера.
+         key_w - картин
+         output - картину с портретом поэта
+    INPUT:
+    key_w: head word of your prepositional phrase
+    sent: your input sentence
+
+    Output:
+    The function returns a string with the target prepositional group phrase
+    """
     check_by = key_w
     sentence = sent
     doc = nlp(sentence)
