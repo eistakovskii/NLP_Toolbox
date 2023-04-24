@@ -1,6 +1,6 @@
 # Natural Language Processing Toolbox
 
-This repository contains various python scripts developed for handling most of the Natural Language Processing (NLP) tasks including classification, named entity recognition and text generation. Most of the scripts are completely run of the mill and are included here because I needed them at my job, some scripts contain original solution and you are welcome to use them.
+This repository contains various python scripts developed for handling most of the Natural Language Processing (NLP) tasks including classification, named entity recognition and text generation. Most of the scripts are completely run of the mill and are included here because I needed them at my job, some scripts, however, contain original solutions and you are most welcome to use them.
 
 * [DATA_AUGMENTATION](https://github.com/eistakovskii/NLP_projects/tree/main/DATA_AUGMENTATION) - here you could find scripts intended for data augmentation using mostly Selenium and in some cases applying algorithmic approach to generating data, e.g. artificial CoLa
 
