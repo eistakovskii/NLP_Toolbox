@@ -1,6 +1,6 @@
-# Natural Language Processing Projects
+# Natural Language Processing Toolbox
 
-This repository contains various finished or on-going projects involving Natural Language Processing (NLP).
+This repository contains various python scripts developed for handling most of the Natural Language Processing (NLP) tasks including classification, named entity recognition and text generation.
 
 * [DATA_AUGMENTATION](https://github.com/eistakovskii/NLP_projects/tree/main/DATA_AUGMENTATION) - here you could find scripts intended for data augmentation using mostly Selenium and in some cases applying algorithmic approach to generating data, e.g. artificial CoLa
 
