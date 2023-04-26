@@ -53,7 +53,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        help="your model name or its path",
+        help="your model name or its path", 
+        default="bert-base-multilingual-cased"
     )
     parser.add_argument(
         "--nickname",
@@ -65,19 +66,19 @@ if __name__ == "__main__":
         "--say_when",
         type=int,
         default=8,
-        help="Number of epochs of no improvement after which the training must stop ", required=False
+        help="Number of epochs of no improvement after which the training must stop "
     )
     parser.add_argument(
         "--threshold",
         type=float,
         default=0.05,
-        help="Number of epochs of no improvement after which the training must stop ", required=False
+        help="Sensitivity to decide when a meaningful change in the evaluation metric happened"
     )
     parser.add_argument(
         "--tf_weights",
         type=bool,
         default=0,
-        help="Import tensorflow weights", required=False
+        help="Import tensorflow weights"
     )
     args = parser.parse_args()
     
