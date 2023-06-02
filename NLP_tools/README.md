@@ -11,3 +11,5 @@ This repository contains various tools that are practically useful for NLP relat
 * [*pymorphy_tools.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/pymorphy_tools.py) - various useful pymorphy tools for working with Russian strings
 
 * [*spacy_tools.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/spacy_tools.py) - various useful spacy tools for working with Russian strings
+
+* [*text_extraction_utils.py*](https://github.com/eistakovskii/NLP_projects/blob/main/NLP_tools/text_extraction_utils.py) - various tools for extracting text from a range of file types, including doc, docx, pdf, png, jpeg, xls, xlsx, htm, html, txt 
