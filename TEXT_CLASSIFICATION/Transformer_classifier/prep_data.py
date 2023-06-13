@@ -28,9 +28,9 @@ def prep_and_split_data(path_to_csv: str) -> list:
     
     train_split_texts, train_split_labels, test_split_texts, test_split_labels, val_split_texts, val_split_labels = prep_splits(path_to_csv, 0.8)
     
-    df_train = pd.DataFrame(list(zip(train_split_texts, train_split_labels)), columns = ['text', 'label'])
-    df_val = pd.DataFrame(list(zip(val_split_texts, val_split_labels)), columns = ['text', 'label'])
-    df_test = pd.DataFrame(list(zip(test_split_texts, test_split_labels)), columns = ['text', 'label'])
+    df_train = pd.DataFrame(list(zip(train_split_texts, train_split_labels)), columns = ['text', 'labels'])
+    df_val = pd.DataFrame(list(zip(val_split_texts, val_split_labels)), columns = ['text', 'labels'])
+    df_test = pd.DataFrame(list(zip(test_split_texts, test_split_labels)), columns = ['text', 'labels'])
     
     train_ds = Dataset.from_pandas(df_train, split="train")
     val_ds = Dataset.from_pandas(df_val, split="val")
