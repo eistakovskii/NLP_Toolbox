@@ -101,7 +101,7 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(args.model)
 
     def preprocess_function(examples):
-       return tokenizer(examples["text"], truncation=True, max_length=512)
+       return tokenizer(examples["text"], padding=True, truncation=True, max_length=512)
 
     tokenized_train = train_ds.map(preprocess_function, batched=True).remove_columns('text')
 
