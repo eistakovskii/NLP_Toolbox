@@ -102,12 +102,12 @@ if __name__ == "__main__":
 
     def preprocess_function(examples):
        return tokenizer(examples["text"], padding=True, truncation=True, max_length=512)
+    
+    tokenized_train = train_ds.map(preprocess_function, batched=True).remove_columns(train_ds.column_names)
 
-    tokenized_train = train_ds.map(preprocess_function, batched=True).remove_columns('text')
+    tokenized_val = val_ds.map(preprocess_function, batched=True).remove_columns(val_ds.column_names)
 
-    tokenized_val = val_ds.map(preprocess_function, batched=True).remove_columns('text')
-
-    tokenized_test = test_ds.map(preprocess_function, batched=True).remove_columns('text')
+    tokenized_test = test_ds.map(preprocess_function, batched=True).remove_columns(test_ds.column_names)
     
     id2label = {
         "0": args.zero_means,
