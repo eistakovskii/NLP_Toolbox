@@ -7,7 +7,7 @@ def prep_splits(path_to_data: str, split_ratio: float) -> list:
     df = pd.read_csv(path_to_data, names=['labels', 'text'], encoding='utf-8')
     df = df.sample(frac=1).reset_index(drop=True)
     text = df.text.tolist()
-    labels = df.label.tolist()
+    labels = df.labels.tolist()
     
     assert len(text) == len(labels), 'Columns do not match!'
     
