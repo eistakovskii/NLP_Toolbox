@@ -4,4 +4,4 @@ numpy
 argparse
 torch
 pandas
-sklearn
+scikit-learn
