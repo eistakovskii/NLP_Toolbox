@@ -3,8 +3,9 @@ import pandas as pd
 from datasets import Dataset
 
 def prep_splits(path_to_data: str, split_ratio: float) -> list:
-    
-    df = pd.read_csv(path_to_data, encoding='utf-8')
+
+    colnames = ['labels', 'text']
+    df = pd.read_csv(path_to_data, encoding='utf-8', names=colnames)
     df = df.sample(frac=1).reset_index(drop=True)
     text = df['text'].values.tolist()
     labels = df['labels'].values.tolist()
