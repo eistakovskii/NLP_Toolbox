@@ -1,0 +1,8 @@
+transformers==4.39.3
+torch==2.3.0
+adapters==0.2.0
+accelerate==0.29.3
+datasets==2.19.0
+numpy==1.26.4
+seqeval==1.2.2
+evaluate==0.4.1
