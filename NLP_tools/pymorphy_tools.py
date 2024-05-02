@@ -85,4 +85,69 @@ def get_num(inp_str: str) -> tuple:
             else:
                 return '1', ' '.join(toks)
         except:    
-                return '1', ' '.join(toks)    
+                return '1', ' '.join(toks)
+
+def find_phrase_root(phrase):
+    """
+    find the root of the phrase, e.g. "какое странное дело" --> "дело"
+    """
+    doc = nlp(phrase)
+
+    # Find the root token of the parsed phrase
+    root_token = next((token for token in doc if token.dep_ == "ROOT"), None)
+
+    return root_token.text if root_token else None
+
+def inflect_two_words(word1, word2):
+    """
+    inflect two words, e.g. ('красивый','облако') --> ('красивое','облако')
+    """
+    parsed_word1 = morph.parse(word1)[0]
+    if len(word2.split()) <= 1:
+        parsed_word2 = morph.parse(word2)[0]
+
+        inflected_word1 = parsed_word1.inflect({parsed_word2.tag.number, 'nomn', parsed_word2.tag.gender}).word
+        inflected_word2 = parsed_word2.word
+
+        return inflected_word1, inflected_word2
+    else:
+        phrase_root_word2 = find_phrase_root(word2)
+        print(phrase_root_word2)
+        if phrase_root_word2 != None:
+            parsed_word2 = morph.parse(phrase_root_word2)[0]
+            inflected_word1 = parsed_word1.inflect({parsed_word2.tag.number, 'nomn', parsed_word2.tag.gender}).word
+            inflected_word2 = parsed_word2.word
+
+            return inflected_word1, word2
+        else:
+            parsed_word2 = morph.parse(word2.split()[0])[0]
+            inflected_word1 = parsed_word1.inflect({parsed_word2.tag.number, 'nomn', parsed_word2.tag.gender}).word
+            inflected_word2 = parsed_word2.word
+
+            return inflected_word1, word2
+
+def inflect_word(word: str, specifications: tuple) -> str:
+    """
+    inflect the given word according to the spicifications:
+    i.e. (Singular/Plural, Which cases according to the pymorphy2 docs, e.g. {'sing', 'nomn'})
+    """
+    morph = pymorphy3.MorphAnalyzer()
+    parsed_word = morph.parse(word)[0]
+
+    try:
+        if specifications[0] == 'sing':
+            if specifications[1] == 'nomn':
+                return parsed_word.inflect({'sing', 'nomn'}).word
+            elif specifications[1] == 'gent':
+                return parsed_word.inflect({'sing', 'gent'}).word
+            elif specifications[1] == 'datv':
+                return parsed_word.inflect({'sing', 'datv'}).word
+        elif specifications[0] == 'plur':
+            if specifications[1] == 'nomn':
+                return parsed_word.inflect({'plur', 'nomn'}).word
+            elif specifications[1] == 'gent':
+                return parsed_word.inflect({'plur', 'gent'}).word
+            elif specifications[1] == 'loct':
+                return parsed_word.inflect({'plur', 'loct'}).word
+    except:
+        return word
